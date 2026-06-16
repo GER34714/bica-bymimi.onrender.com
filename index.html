@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bica By Mimi · Pastelería Artesanal Premium</title>
+
+    <!-- ===== META TAGS ===== -->
+    <title>Bica By Mimi · Pastelería Artesanal Gourmet</title>
+    <meta name="description" content="Pastelería artesanal gourmet. Tortas personalizadas, cookies y mesas dulces para momentos especiales. Pedí tu presupuesto por WhatsApp." />
+    <meta name="keywords" content="pastelería gourmet, tortas personalizadas, cookies decoradas, mesas dulces, Bica By Mimi" />
+    <meta name="author" content="Bica By Mimi" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bicabymimi.com/" />
+    <meta property="og:title" content="Bica By Mimi · Pastelería Artesanal Gourmet" />
+    <meta property="og:description" content="Dulces que cuentan historias. Tortas personalizadas, cookies y mesas dulces hechas con amor." />
+    <meta property="og:image" content="https://fhxcumwhgtfirznnznjx.supabase.co/storage/v1/object/public/Imagenes/b9c4f543-361e-4d42-9dbc-2e1f4e315670%20(1).jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bica By Mimi · Pastelería Artesanal Gourmet" />
+    <meta name="twitter:description" content="Dulces que cuentan historias. Tortas personalizadas, cookies y mesas dulces hechas con amor." />
+    <meta name="twitter:image" content="https://fhxcumwhgtfirznnznjx.supabase.co/storage/v1/object/public/Imagenes/b9c4f543-361e-4d42-9dbc-2e1f4e315670%20(1).jpeg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        /* ===== RESET Y BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -20,13 +43,18 @@
             color: #3d2b36;
             line-height: 1.6;
             min-height: 100vh;
-            background-image: url('https://fhxcumwhgtfirznnznjx.supabase.co/storage/v1/object/public/Imagenes/9f781f643d1d1a2f8d1981eae7fa76d5.jpg');
+            /* ===== IMAGEN DE FONDO OPTIMIZADA ===== */
+            background-image: url('https://fhxcumwhgtfirznnznjx.supabase.co/storage/v1/object/public/Imagenes/9f781f643d1d1a2f8d1981eae7fa76d5.jpg?width=1200&quality=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
+            /* Evita que la imagen se vea pixelada */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
         }
 
+        /* Overlay para mejorar legibilidad */
         body::before {
             content: '';
             position: fixed;
@@ -59,12 +87,8 @@
         }
 
         @keyframes neonPulse {
-            0%, 100% {
-                box-shadow: 0 0 10px rgba(217, 163, 188, 0.3), 0 0 20px rgba(217, 163, 188, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(217, 163, 188, 0.6), 0 0 40px rgba(217, 163, 188, 0.2), 0 0 60px rgba(217, 163, 188, 0.1);
-            }
+            0%, 100% { box-shadow: 0 0 10px rgba(217, 163, 188, 0.3), 0 0 20px rgba(217, 163, 188, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(217, 163, 188, 0.6), 0 0 40px rgba(217, 163, 188, 0.2), 0 0 60px rgba(217, 163, 188, 0.1); }
         }
 
         nav {
@@ -92,12 +116,8 @@
         }
 
         @keyframes logoGlow {
-            0%, 100% {
-                filter: drop-shadow(0 0 5px rgba(217, 163, 188, 0.3));
-            }
-            50% {
-                filter: drop-shadow(0 0 15px rgba(217, 163, 188, 0.6)) drop-shadow(0 0 30px rgba(217, 163, 188, 0.3));
-            }
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(217, 163, 188, 0.3)); }
+            50% { filter: drop-shadow(0 0 15px rgba(217, 163, 188, 0.6)) drop-shadow(0 0 30px rgba(217, 163, 188, 0.3)); }
         }
 
         .menu-toggle {
@@ -182,7 +202,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== BOTÓN FLOTANTE CARRITO ===== */
+        /* ===== BOTONES FLOTANTES ===== */
         .btn-carrito-float {
             position: fixed;
             bottom: 100px;
@@ -230,7 +250,6 @@
             50% { transform: translateY(-8px); }
         }
 
-        /* ===== WHATSAPP FLOTANTE ===== */
         .btn-whatsapp-float {
             position: fixed;
             bottom: 28px;
@@ -251,6 +270,13 @@
         }
         .btn-whatsapp-float:hover {
             transform: scale(1.08);
+        }
+
+        .btn-flotante-oculto {
+            opacity: 0 !important;
+            transform: scale(0.8) !important;
+            pointer-events: none !important;
+            transition: opacity 0.4s ease, transform 0.4s ease !important;
         }
 
         /* ===== CARRITO DESPLEGABLE ===== */
@@ -373,13 +399,23 @@
         .hero h1 {
             font-size: 52px;
             line-height: 1.1;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             color: #3d2532;
             font-weight: 500;
         }
         .hero h1 span {
             color: #c48ba8;
             font-weight: 600;
+        }
+        /* ===== NUEVO: Pastelería gourmet en el hero ===== */
+        .hero .subtitle-gourmet {
+            font-size: 1.1rem;
+            color: #b06a8e;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
         }
         .hero p {
             font-size: 18px;
@@ -540,7 +576,6 @@
             background: #c48ba8;
             transform: scale(1.02);
         }
-        /* Estado agregado al carrito */
         .btn-agregar.agregado {
             background: #27ae60 !important;
             color: white;
@@ -1025,6 +1060,17 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
+        .footer-credit-link {
+            color: #eccad9;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            opacity: 0.6;
+        }
+        .footer-credit-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
         /* ===== RESPONSIVE ===== */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
@@ -1210,7 +1256,7 @@
     </div>
 
     <!-- ===== BOTÓN FLOTANTE CARRITO ===== -->
-    <button class="btn-carrito-float" onclick="toggleCarrito()" aria-label="Carrito">
+    <button class="btn-carrito-float" id="btnCarritoFloat" onclick="toggleCarrito()" aria-label="Carrito">
         <i class="fas fa-shopping-bag"></i>
         <span class="badge-float" id="cartFloatBadge">0</span>
     </button>
@@ -1237,7 +1283,7 @@
     </div>
 
     <!-- WHATSAPP FLOTANTE -->
-    <a href="#" class="btn-whatsapp-float" aria-label="WhatsApp">
+    <a href="#" class="btn-whatsapp-float" id="btnWhatsappFloat" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1253,10 +1299,11 @@
         <img id="lightboxImg" src="" alt="Imagen ampliada" />
     </div>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO ACTUALIZADO ===== -->
     <section class="hero" id="inicio">
         <div class="container hero-content">
             <div>
+                <span class="subtitle-gourmet">✦ Pastelería Gourmet ✦</span>
                 <h1>Dulces que <span>cuentan</span> historias</h1>
                 <p>Pastelería artesanal con diseño, sabor y amor en cada detalle. Tortas, cookies y mesas dulces para tus momentos especiales.</p>
                 <a href="#productos" class="btn-primary"><i class="fas fa-star" style="margin-right:8px;"></i>Ver productos</a>
@@ -1416,7 +1463,7 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
+    <footer id="footer">
         <div class="container">
             <h3>Bica By Mimi</h3>
             <p>Pastelería artesanal · hecha con amor</p>
@@ -1427,12 +1474,43 @@
                 <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
             <span class="admin-link" onclick="toggleAdmin()"><i class="fas fa-lock"></i> Panel de Administración</span>
-            <p style="margin-top:10px; font-size:0.7rem; opacity:0.4;">© 2026 · Dulces para momentos especiales</p>
+            <p style="margin-top:15px; font-size:0.8rem; opacity:0.7;">
+                Creado y diseñado por
+                <a href="https://landingciborg347.onrender.com" target="_blank" class="footer-credit-link">
+                    <strong>CIBORG 347</strong>
+                </a>
+            </p>
+            <p style="margin-top:5px; font-size:0.65rem; opacity:0.4;">© 2026 · Dulces para momentos especiales</p>
         </div>
     </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // ===== OCULTAR BOTONES AL LLEGAR AL FOOTER =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const footer = document.getElementById('footer');
+            const btnCarrito = document.getElementById('btnCarritoFloat');
+            const btnWhatsapp = document.getElementById('btnWhatsappFloat');
+
+            if (footer && btnCarrito && btnWhatsapp) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            btnCarrito.classList.add('btn-flotante-oculto');
+                            btnWhatsapp.classList.add('btn-flotante-oculto');
+                        } else {
+                            btnCarrito.classList.remove('btn-flotante-oculto');
+                            btnWhatsapp.classList.remove('btn-flotante-oculto');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                observer.observe(footer);
+            }
+        });
+
         // ===== MENÚ HAMBURGUESA =====
         function toggleMenu() {
             const menu = document.getElementById('menuMobile');
@@ -1789,7 +1867,6 @@
             const producto = productos.find(p => p.id === id);
             if (!producto) return;
 
-            // Verificar si ya está en el carrito
             if (carrito.some(item => item.id === id)) {
                 mostrarNotificacion('⚠️ Ya en carrito', `${producto.nombre} ya está agregado`);
                 return;
@@ -1797,11 +1874,10 @@
 
             carrito.push({ ...producto, cantidad: 1 });
             actualizarCarrito();
-            renderizarProductos(); // Actualiza el estado de los botones
+            renderizarProductos();
 
             mostrarNotificacion('🍰 Producto agregado', `${producto.nombre} agregado al carrito`);
 
-            // Feedback visual en la card
             const card = document.querySelector(`.producto-card img[src="${producto.imagen}"]`)?.closest('.producto-card');
             if (card) {
                 const btn = card.querySelector('.btn-agregar');
