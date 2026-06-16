@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bica By Mimi · Pastelería Artesanal Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: #3d2b36;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: url('https://fhxcumwhgtfirznnznjx.supabase.co/storage/v1/object/public/Imagenes/9f781f643d1d1a2f8d1981eae7fa76d5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 245, 248, 0.78);
+            z-index: -1;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 245, 248, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(201, 138, 175, 0.08);
+            border-bottom: 1px solid #ffe2ed;
+            padding: 0;
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(217, 163, 188, 0.3), 0 0 20px rgba(217, 163, 188, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(217, 163, 188, 0.6), 0 0 40px rgba(217, 163, 188, 0.2), 0 0 60px rgba(217, 163, 188, 0.1);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            min-height: 55px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            background: linear-gradient(145deg, #d9a3bc, #b87a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        .logo i {
+            -webkit-text-fill-color: #c48ba8;
+            margin-right: 4px;
+            font-size: 20px;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 5px rgba(217, 163, 188, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(217, 163, 188, 0.6)) drop-shadow(0 0 30px rgba(217, 163, 188, 0.3));
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #553b47;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+        .menu-toggle:hover {
+            color: #b06a8e;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #553b47;
+            font-weight: 400;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            position: relative;
+        }
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d9a3bc;
+            transition: 0.25s;
+        }
+        .menu a:hover::after {
+            width: 100%;
+        }
+        .menu a:hover {
+            color: #b06a8e;
+        }
+
+        .menu-mobile {
+            display: none;
+            position: fixed;
+            top: 55px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 245, 248, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            flex-direction: column;
+            gap: 15px;
+            border-bottom: 1px solid #ffe2ed;
+            z-index: 998;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.3s ease;
+        }
+        .menu-mobile.active {
+            display: flex;
+        }
+        .menu-mobile a {
+            text-decoration: none;
+            color: #553b47;
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5e5ee;
+            transition: 0.2s;
+        }
+        .menu-mobile a:hover {
+            color: #b06a8e;
+            padding-left: 10px;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== BOTÓN FLOTANTE CARRITO ===== */
+        .btn-carrito-float {
+            position: fixed;
+            bottom: 100px;
+            right: 28px;
+            background: #d9a3bc;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(217, 163, 188, 0.4);
+            z-index: 999;
+            transition: 0.25s;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            animation: floatBounce 2s ease-in-out infinite;
+        }
+        .btn-carrito-float:hover {
+            transform: scale(1.08);
+            background: #c48ba8;
+        }
+        .btn-carrito-float .badge-float {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+        }
+
+        @keyframes floatBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ===== WHATSAPP FLOTANTE ===== */
+        .btn-whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: 0.25s;
+            text-decoration: none;
+        }
+        .btn-whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        /* ===== CARRITO DESPLEGABLE ===== */
+        .carrito-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .carrito-overlay.active {
+            display: block;
+        }
+
+        .carrito-flotante {
+            position: fixed;
+            right: 20px;
+            top: 70px;
+            width: 340px;
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid #ffe2ed;
+            z-index: 1000;
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .carrito-flotante.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .carrito-flotante h4 {
+            color: #3d2532;
+            margin-bottom: 12px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .carrito-flotante .item-carrito {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5e5ee;
+            font-size: 0.85rem;
+        }
+        .carrito-flotante .total {
+            font-weight: 600;
+            color: #b06a8e;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #f5e5ee;
+        }
+        .btn-finalizar {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .btn-finalizar:hover {
+            background: #1da851;
+        }
+        .btn-vaciar {
+            background: transparent;
+            color: #b06a8e;
+            border: 1px solid #f5d4e2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-vaciar:hover {
+            background: #fff0f5;
+        }
+        .btn-cerrar-carrito {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            color: #b06a8e;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-cerrar-carrito:hover {
+            transform: rotate(90deg);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding-top: 75px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 245, 248, 0.3);
+            backdrop-filter: blur(2px);
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            color: #3d2532;
+            font-weight: 500;
+        }
+        .hero h1 span {
+            color: #c48ba8;
+            font-weight: 600;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            color: #5f4754;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #d9a3bc;
+            color: white;
+            text-decoration: none;
+            border-radius: 60px;
+            font-weight: 500;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(201, 138, 175, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #c48ba8;
+            box-shadow: 0 16px 28px rgba(201, 138, 175, 0.35);
+        }
+
+        .hero-image {
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px -10px rgba(180, 110, 140, 0.2);
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        /* ===== SECCIONES ===== */
+        section { padding: 60px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 500;
+            color: #3d2532;
+            margin-bottom: 8px;
+        }
+        .section-title i { color: #d9a3bc; margin-right: 6px; }
+        .section-subtitle {
+            text-align: center;
+            color: #8f7283;
+            margin-bottom: 40px;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        /* ===== QUIENES SOMOS ===== */
+        .quienes-somos {
+            background: rgba(255, 243, 248, 0.85);
+            backdrop-filter: blur(4px);
+        }
+        .quienes-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .quienes-content .firma {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            color: #b06a8e;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .quienes-content .historia {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #4d3845;
+        }
+        .quienes-content .historia strong { color: #b06a8e; }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: rgba(255, 243, 248, 0.85);
+            backdrop-filter: blur(4px);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 20px 35px rgba(185, 120, 150, 0.12);
+        }
+        .about-text h3 {
+            font-size: 30px;
+            font-weight: 400;
+            color: #3d2532;
+            margin-bottom: 20px;
+        }
+        .about-text h3 i { color: #d9a3bc; margin-right: 8px; }
+
+        /* ===== PRODUCTOS ===== */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .producto-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 18px 16px 20px;
+            text-align: center;
+            border: 1px solid #ffe2ed;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(180, 110, 140, 0.05);
+            cursor: pointer;
+        }
+        .producto-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px rgba(180, 110, 140, 0.12);
+        }
+        .producto-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .producto-card h4 {
+            color: #3d2532;
+            font-weight: 500;
+        }
+        .producto-card .precio {
+            color: #b06a8e;
+            font-weight: 600;
+            margin: 4px 0 10px;
+        }
+        .btn-agregar {
+            background: #d9a3bc;
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.85rem;
+        }
+        .btn-agregar:hover {
+            background: #c48ba8;
+            transform: scale(1.02);
+        }
+        /* Estado agregado al carrito */
+        .btn-agregar.agregado {
+            background: #27ae60 !important;
+            color: white;
+            cursor: default;
+        }
+        .btn-agregar.agregado:hover {
+            background: #27ae60 !important;
+            transform: none;
+        }
+        .producto-descripcion {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            background: #faf0f5;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            color: #5f4754;
+            text-align: left;
+        }
+        .producto-descripcion.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* ===== GALERÍA ===== */
+        #galeria {
+            background: rgba(255, 243, 248, 0.85);
+            backdrop-filter: blur(4px);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 1;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item .gallery-tag {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(217, 163, 188, 0.9);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 20px;
+            object-fit: contain;
+        }
+        .lightbox .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lightbox .close-lightbox:hover { transform: rotate(90deg); }
+
+        /* ===== PROMOCIONES ===== */
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .promo-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 25px;
+            border: 2px solid #ffe2ed;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(180, 110, 140, 0.1);
+        }
+        .promo-card .promo-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #d9a3bc;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .promo-card .precio-original {
+            text-decoration: line-through;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        .promo-card .precio-oferta {
+            color: #b06a8e;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .promo-card .btn-promo {
+            background: #d9a3bc;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+        .promo-card .btn-promo:hover {
+            background: #c48ba8;
+            transform: scale(1.02);
+        }
+
+        /* ===== CALENDARIO ===== */
+        #reservas {
+            background: rgba(255, 243, 248, 0.85);
+            backdrop-filter: blur(4px);
+        }
+        .calendar-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(180, 110, 140, 0.06);
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .calendar-header button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #b06a8e;
+            cursor: pointer;
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        .calendar-header button:hover { background: #f5e5ee; }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+        .calendar-grid .day-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #b06a8e;
+            padding: 8px 0;
+        }
+        .calendar-grid .day {
+            padding: 10px 0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .calendar-grid .day:hover:not(.disabled):not(.reserved) { background: #f5e5ee; }
+        .calendar-grid .day.selected {
+            background: #d9a3bc;
+            color: white;
+        }
+        .calendar-grid .day.reserved {
+            background: #f5d4e2;
+            color: #aaa;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+        .calendar-grid .day.disabled {
+            color: #ddd;
+            cursor: not-allowed;
+        }
+
+        /* ===== RESEÑAS ===== */
+        .reseñas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .reseña-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 25px;
+            border: 1px solid #ffe2ed;
+            transition: 0.3s;
+        }
+        .reseña-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(180, 110, 140, 0.08);
+        }
+        .reseña-card .estrellas {
+            color: #f5b8d0;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .reseña-card .reseña-foto {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 12px;
+        }
+        .reseña-card .reseña-usuario {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .reseña-card .reseña-usuario .nombre { font-weight: 500; }
+        .reseña-card .reseña-usuario .fecha {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+
+        .form-reseña {
+            max-width: 500px;
+            margin: 30px auto 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            padding: 25px;
+            border-radius: 28px;
+            border: 1px solid #ffe2ed;
+        }
+        .form-reseña select,
+        .form-reseña textarea,
+        .form-reseña input {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #f5d4e2;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+        .form-reseña textarea {
+            border-radius: 20px;
+            min-height: 80px;
+            resize: vertical;
+        }
+        .form-reseña .btn-enviar-reseña {
+            background: #d9a3bc;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .form-reseña .btn-enviar-reseña:hover { background: #c48ba8; }
+
+        /* ===== BLOG ===== */
+        #blog {
+            background: rgba(255, 243, 248, 0.85);
+            backdrop-filter: blur(4px);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .blog-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(180, 110, 140, 0.05);
+            transition: 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(180, 110, 140, 0.1);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-card .blog-content { padding: 20px; }
+        .blog-card .blog-content h4 {
+            color: #3d2532;
+            margin-bottom: 8px;
+        }
+        .blog-card .blog-content p {
+            color: #5f4754;
+            font-size: 0.9rem;
+        }
+        .blog-card .blog-content .blog-tag {
+            display: inline-block;
+            background: #f5e5ee;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #b06a8e;
+            margin-top: 8px;
+        }
+
+        /* ===== NOTIFICACIONES ===== */
+        .notification {
+            position: fixed;
+            bottom: 170px;
+            right: 30px;
+            background: #3d2532;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            transform: translateX(120%);
+            transition: 0.4s ease;
+            max-width: 350px;
+        }
+        .notification.active { transform: translateX(0); }
+        .notification .notif-title {
+            font-weight: 600;
+            color: #d9a3bc;
+        }
+        .notification .notif-body {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ===== PANEL ADMIN ===== */
+        .admin-panel {
+            background: rgba(255, 243, 248, 0.92);
+            backdrop-filter: blur(4px);
+            padding: 40px 0;
+            border-top: 2px solid #ffe2ed;
+            display: none;
+        }
+        .admin-panel.visible { display: block; }
+        .admin-panel .admin-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(180, 110, 140, 0.06);
+        }
+        .admin-panel input,
+        .admin-panel textarea,
+        .admin-panel select {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #f5d4e2;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .admin-panel input:focus,
+        .admin-panel textarea:focus,
+        .admin-panel select:focus {
+            outline: none;
+            border-color: #d9a3bc;
+            box-shadow: 0 0 0 4px rgba(201, 138, 175, 0.1);
+        }
+        .admin-panel textarea {
+            border-radius: 20px;
+            min-height: 60px;
+            resize: vertical;
+        }
+        .admin-panel .btn-admin {
+            background: #d9a3bc;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .admin-panel .btn-admin:hover { background: #c48ba8; }
+        .admin-panel .btn-eliminar {
+            background: #e8a0a0;
+            color: white;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-left: 8px;
+            transition: 0.2s;
+        }
+        .admin-panel .btn-eliminar:hover { background: #d47a7a; }
+        .admin-producto-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            margin-bottom: 6px;
+            border: 1px solid #f5e5ee;
+        }
+
+        /* ===== CONTACTO ===== */
+        #contacto {
+            background: rgba(255, 243, 248, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #3d2532;
+            color: #f5e0ea;
+            padding: 30px 0;
+            text-align: center;
+        }
+        footer h3 {
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 22px;
+            color: #eccad9;
+        }
+        footer p { opacity: 0.6; font-size: 0.85rem; }
+        .footer-social a {
+            color: #eccad9;
+            margin: 0 8px;
+            font-size: 18px;
+            opacity: 0.5;
+            transition: 0.2s;
+        }
+        .footer-social a:hover { opacity: 1; }
+        .admin-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: #eccad9;
+            opacity: 0.3;
+            font-size: 0.7rem;
+            text-decoration: none;
+            transition: 0.2s;
+            border: 1px solid rgba(236, 202, 217, 0.1);
+            padding: 4px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+        .admin-link:hover {
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 920px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero h1 { font-size: 38px; }
+            .about-content { grid-template-columns: 1fr; }
+            .carrito-flotante {
+                width: 280px;
+                right: 10px;
+                top: 65px;
+            }
+            .hero-image img { max-width: 400px; }
+            .quienes-content .historia { font-size: 0.95rem; }
+            .btn-carrito-float {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                bottom: 90px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu { display: none; }
+            .menu-toggle { display: block; }
+
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .hero-image img { max-width: 300px; }
+
+            .section-title { font-size: 28px; }
+            .section-subtitle { font-size: 0.9rem; }
+
+            .productos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            .producto-card img { height: 140px; }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .gallery-item { aspect-ratio: 1; }
+
+            .promo-grid { grid-template-columns: 1fr; }
+            .reseñas-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+
+            .carrito-flotante {
+                width: 90%;
+                right: 5%;
+                top: 65px;
+                padding: 15px;
+                max-height: 60vh;
+            }
+
+            .calendar-container { padding: 15px; }
+            .calendar-grid .day {
+                padding: 8px 0;
+                font-size: 0.8rem;
+            }
+
+            .form-reseña { padding: 18px; }
+            .admin-panel .admin-form { padding: 18px; }
+
+            .hero { padding-top: 65px; min-height: 60vh; }
+            .quienes-content .historia { font-size: 0.9rem; }
+            .quienes-content .firma { font-size: 1.2rem; }
+
+            .btn-carrito-float {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                bottom: 85px;
+                right: 15px;
+            }
+            .btn-whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 15px;
+            }
+            .notification {
+                bottom: 160px;
+                right: 15px;
+                max-width: 280px;
+                padding: 12px 18px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .hero-image img { max-width: 220px; }
+            .productos-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .producto-card {
+                padding: 12px 10px 14px;
+            }
+            .producto-card img { height: 120px; }
+            .producto-card h4 { font-size: 0.9rem; }
+            .btn-agregar {
+                font-size: 0.75rem;
+                padding: 6px 16px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .section-title { font-size: 24px; }
+            .btn-primary {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            .quienes-content .historia { font-size: 0.85rem; }
+            .btn-carrito-float {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                bottom: 80px;
+                right: 12px;
+            }
+            .btn-carrito-float .badge-float {
+                width: 20px;
+                height: 20px;
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .productos-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 22px; }
+            .logo { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-cake"></i> Bica By Mimi</div>
+                <div class="menu">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#quienes-somos">Quiénes Somos</a>
+                    <a href="#productos">Productos</a>
+                    <a href="#galeria">Galería</a>
+                    <a href="#promociones">Promos</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="menu-mobile" id="menuMobile">
+        <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+        <a href="#quienes-somos" onclick="toggleMenu()">Quiénes Somos</a>
+        <a href="#productos" onclick="toggleMenu()">Productos</a>
+        <a href="#galeria" onclick="toggleMenu()">Galería</a>
+        <a href="#promociones" onclick="toggleMenu()">Promos</a>
+        <a href="#blog" onclick="toggleMenu()">Blog</a>
+        <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+        <a href="#" onclick="toggleCarrito(); toggleMenu();" style="border-bottom: none;">
+            <i class="fas fa-shopping-bag"></i> Carrito (<span id="cartCountMobile">0</span>)
+        </a>
+    </div>
+
+    <!-- ===== BOTÓN FLOTANTE CARRITO ===== -->
+    <button class="btn-carrito-float" onclick="toggleCarrito()" aria-label="Carrito">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge-float" id="cartFloatBadge">0</span>
+    </button>
+
+    <!-- OVERLAY CARRITO -->
+    <div class="carrito-overlay" id="carritoOverlay" onclick="toggleCarrito()"></div>
+
+    <!-- CARRITO DESPLEGABLE -->
+    <div class="carrito-flotante" id="carritoFlotante">
+        <h4>
+            <span><i class="fas fa-shopping-bag"></i> Carrito</span>
+            <div>
+                <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+                <button class="btn-cerrar-carrito" onclick="toggleCarrito()">✕</button>
+            </div>
+        </h4>
+        <div id="listaCarrito">
+            <p style="color:#aaa; font-size:0.8rem; text-align:center;">Sin productos</p>
+        </div>
+        <div class="total" id="totalCarrito">Total: $0</div>
+        <button class="btn-finalizar" onclick="finalizarPedido()">
+            <i class="fab fa-whatsapp"></i> Finalizar pedido
+        </button>
+    </div>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="#" class="btn-whatsapp-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notification" id="notification">
+        <div class="notif-title" id="notifTitle">📦 Pedido confirmado</div>
+        <div class="notif-body" id="notifBody">Tu pedido está en preparación</div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightboxImg" src="" alt="Imagen ampliada" />
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <div>
+                <h1>Dulces que <span>cuentan</span> historias</h1>
+                <p>Pastelería artesanal con diseño, sabor y amor en cada detalle. Tortas, cookies y mesas dulces para tus momentos especiales.</p>
+                <a href="#productos" class="btn-primary"><i class="fas fa-star" style="margin-right:8px;"></i>Ver productos</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://fhxcumwhgtfirznnznjx.supabase.co/storage/v1/object/public/Imagenes/b9c4f543-361e-4d42-9dbc-2e1f4e315670%20(1).jpeg" alt="Bica By Mimi - Logo" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUIENES SOMOS ===== -->
+    <section class="quienes-somos" id="quienes-somos">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-heart"></i> Quiénes Somos</h2>
+            <div class="quienes-content">
+                <p class="historia">
+                    Mi nombre es <strong>Lucia Alvarez Costa</strong> y me dedico con pasión a la pastelería gourmet. Nuestra propuesta tiene su origen en la búsqueda constante de sabores únicos, partiendo siempre de las recetas y sabores más tradicionales.
+                </p>
+                <br />
+                <p class="historia">
+                    <strong>Bica</strong> nace desde que era muy pequeña, gestándose en la cocina de mi bisabuela <strong>Mimi</strong>. Fue ella quien me enseñó los primeros pasos en este mundo, compartiendo conmigo todos sus secretos y transmitiéndome una lección fundamental: <strong>la importancia del amor como el ingrediente principal de cada preparación.</strong>
+                </p>
+                <br />
+                <p class="historia">
+                    Hoy, comprendiendo que el verdadero éxito de la cocina es hacer las cosas con el corazón, me encuentro feliz y entusiasmada por dar vida a este nuevo emprendimiento... <strong>¡Allá vamos!</strong>
+                </p>
+                <div class="firma">— Lucía Alvarez Costa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTOS ===== -->
+    <section id="productos">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-birthday-cake"></i> Nuestros productos</h2>
+            <p class="section-subtitle">Hacé clic en cada producto para ver su descripción</p>
+            <div class="productos-grid" id="productosGrid">
+                <!-- Productos desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALERÍA ===== -->
+    <section id="galeria">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-images"></i> Galería</h2>
+            <p class="section-subtitle">Explorá nuestras creaciones</p>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Galería desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROMOCIONES ===== -->
+    <section id="promociones">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-tags"></i> Promociones especiales</h2>
+            <p class="section-subtitle">Combos y ofertas para endulzar tu evento</p>
+            <div class="promo-grid" id="promoGrid">
+                <!-- Promociones desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CALENDARIO ===== -->
+    <section id="reservas">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Reservá tu fecha</h2>
+            <p class="section-subtitle">Seleccioná el día de tu evento</p>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button onclick="cambiarMes(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <span id="calendarMonthYear" style="font-weight:500; color:#3d2532;">Enero 2026</span>
+                    <button onclick="cambiarMes(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div style="margin-top:15px; text-align:center; font-size:0.85rem; color:#8f7283;">
+                    <span style="color:#d9a3bc;">●</span> Disponible &nbsp;
+                    <span style="color:#f5d4e2;">●</span> Reservado
+                </div>
+                <div style="margin-top:15px; text-align:center;">
+                    <button class="btn-primary" onclick="reservarFecha()" style="font-size:0.9rem; padding:10px 30px;">
+                        <i class="fas fa-check"></i> Confirmar reserva
+                    </button>
+                </div>
+                <p id="fechaSeleccionada" style="text-align:center; margin-top:10px; color:#b06a8e; font-weight:500;"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESEÑAS ===== -->
+    <section id="resenas">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-star"></i> Lo que dicen nuestros clientes</h2>
+            <p class="section-subtitle">Opiniones reales de personas que disfrutaron nuestros productos</p>
+            <div class="reseñas-grid" id="reseñasGrid"></div>
+            <div class="form-reseña">
+                <h4 style="color:#3d2532; margin-bottom:12px;">Dejá tu reseña</h4>
+                <input type="text" id="reseñaNombre" placeholder="Tu nombre" />
+                <select id="reseñaEstrellas">
+                    <option value="5">⭐⭐⭐⭐⭐ - Excelente</option>
+                    <option value="4">⭐⭐⭐⭐ - Muy bueno</option>
+                    <option value="3">⭐⭐⭐ - Bueno</option>
+                    <option value="2">⭐⭐ - Regular</option>
+                    <option value="1">⭐ - Malo</option>
+                </select>
+                <textarea id="reseñaTexto" placeholder="Contanos tu experiencia..."></textarea>
+                <button class="btn-enviar-reseña" onclick="agregarReseña()">
+                    <i class="fas fa-paper-plane"></i> Enviar reseña
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG ===== -->
+    <section id="blog">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-blog"></i> Blog & Recetario</h2>
+            <p class="section-subtitle">Historias, recetas y consejos de nuestra pastelería</p>
+            <div class="blog-grid" id="blogGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section id="contacto">
+        <div class="container" style="text-align:center;">
+            <h2 style="font-size:32px; font-weight:400; color:#3d2532;">¿Tenés una idea?</h2>
+            <p style="color:#5f4754; margin-bottom:20px;">La convertimos en algo delicioso.</p>
+            <a href="#" class="btn-primary"><i class="fab fa-whatsapp" style="margin-right:8px;"></i>Contactar por WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- ===== PANEL ADMIN ===== -->
+    <section class="admin-panel" id="adminPanel">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-cog"></i> Panel de Administración</h2>
+            <p class="section-subtitle">Gestioná tus productos: agregá, editá o eliminá</p>
+            <div class="admin-form">
+                <h4 style="margin-bottom:15px; color:#3d2532;">Agregar nuevo producto</h4>
+                <input type="text" id="adminNombre" placeholder="Nombre del producto" />
+                <input type="text" id="adminPrecio" placeholder="Precio (ej: 3200)" />
+                <input type="text" id="adminImagen" placeholder="URL de la imagen" />
+                <select id="adminCategoria">
+                    <option value="tortas">Tortas</option>
+                    <option value="cupcakes">Cupcakes</option>
+                    <option value="cookies">Cookies</option>
+                    <option value="mesas">Mesas dulces</option>
+                </select>
+                <textarea id="adminDescripcion" placeholder="Descripción del producto"></textarea>
+                <button class="btn-admin" onclick="agregarProducto()"><i class="fas fa-plus"></i> Agregar producto</button>
+            </div>
+            <div style="margin-top:30px;">
+                <h4 style="color:#3d2532; margin-bottom:15px;">Productos actuales</h4>
+                <div id="listaProductosAdmin"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <h3>Bica By Mimi</h3>
+            <p>Pastelería artesanal · hecha con amor</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <span class="admin-link" onclick="toggleAdmin()"><i class="fas fa-lock"></i> Panel de Administración</span>
+            <p style="margin-top:10px; font-size:0.7rem; opacity:0.4;">© 2026 · Dulces para momentos especiales</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== MENÚ HAMBURGUESA =====
+        function toggleMenu() {
+            const menu = document.getElementById('menuMobile');
+            menu.classList.toggle('active');
+        }
+
+        window.addEventListener('scroll', function() {
+            const menu = document.getElementById('menuMobile');
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // ===== DATOS INICIALES =====
+        let productos = [{
+            id: 1,
+            nombre: "Torta Clásica",
+            precio: 3200,
+            imagen: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop",
+            categoria: "tortas",
+            descripcion: "Torta de vainilla con relleno de dulce de leche y frutos rojos. Ideal para cumpleaños."
+        }, {
+            id: 4,
+            nombre: "Torta Frutal",
+            precio: 3800,
+            imagen: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=400&auto=format&fit=crop",
+            categoria: "tortas",
+            descripcion: "Torta de frutas frescas con crema pastelera y base de almendras. Refrescante."
+        }];
+
+        let carrito = [];
+        let nextId = 5;
+
+        // ===== GALERÍA =====
+        let galeria = [
+            { imagen: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop", categoria: "tortas" },
+            { imagen: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=400&auto=format&fit=crop", categoria: "tortas" },
+            { imagen: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&auto=format&fit=crop", categoria: "tortas" },
+            { imagen: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop", categoria: "tortas" },
+            { imagen: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=400&auto=format&fit=crop", categoria: "tortas" },
+            { imagen: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&auto=format&fit=crop", categoria: "tortas" },
+        ];
+
+        // ===== PROMOCIONES =====
+        let promociones = [{
+            nombre: "Combo Cumpleaños",
+            descripcion: "Torta + 12 cookies + 6 cupcakes",
+            precioOriginal: 8500,
+            precioOferta: 7200,
+            badge: "20% OFF"
+        }, {
+            nombre: "Pack Amor",
+            descripcion: "6 cupcakes + caja de chocolates + tarjeta personalizada",
+            precioOriginal: 4200,
+            precioOferta: 3500,
+            badge: "15% OFF"
+        }, {
+            nombre: "Mesa Dulce Premium",
+            descripcion: "Torta + 24 cookies + 12 cupcakes + macarons",
+            precioOriginal: 15200,
+            precioOferta: 12800,
+            badge: "16% OFF"
+        }];
+
+        // ===== RESEÑAS =====
+        let reseñas = [{
+            nombre: "María G.",
+            estrellas: 5,
+            texto: "La torta de cumpleaños fue espectacular. El diseño y el sabor superaron todas mis expectativas.",
+            fecha: "Hace 2 días",
+            foto: "https://i.pravatar.cc/100?img=1"
+        }, {
+            nombre: "Carlos R.",
+            estrellas: 5,
+            texto: "Las cookies personalizadas fueron un éxito en el evento. Todos preguntaban de dónde las saqué.",
+            fecha: "Hace 5 días",
+            foto: "https://i.pravatar.cc/100?img=2"
+        }, {
+            nombre: "Laura S.",
+            estrellas: 4,
+            texto: "Excelente atención y calidad. La mesa dulce quedó hermosa y todo estaba delicioso.",
+            fecha: "Hace 1 semana",
+            foto: "https://i.pravatar.cc/100?img=3"
+        }];
+
+        // ===== BLOG =====
+        let blogPosts = [{
+            titulo: "Cómo conservar tu torta por más tiempo",
+            resumen: "Tips para mantener la frescura y el sabor de tus tortas artesanales.",
+            imagen: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&auto=format&fit=crop",
+            tag: "Consejos"
+        }, {
+            titulo: "La historia detrás de nuestras recetas",
+            resumen: "Recetas transmitidas de generación en generación con un toque moderno.",
+            imagen: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&auto=format&fit=crop",
+            tag: "Historia"
+        }, {
+            titulo: "Tendencias en decoración de tortas 2026",
+            resumen: "Colores, texturas y estilos que están marcando tendencia este año.",
+            imagen: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=400&auto=format&fit=crop",
+            tag: "Tendencias"
+        }];
+
+        // ===== CALENDARIO =====
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+        let selectedDate = null;
+        let reservedDates = [5, 12, 18, 25];
+
+        // ===== TOGGLE CARRITO =====
+        function toggleCarrito() {
+            document.getElementById('carritoFlotante').classList.toggle('active');
+            document.getElementById('carritoOverlay').classList.toggle('active');
+        }
+
+        // ===== TOGGLE ADMIN =====
+        function toggleAdmin() {
+            const panel = document.getElementById('adminPanel');
+            panel.classList.toggle('visible');
+            if (panel.classList.contains('visible')) {
+                setTimeout(() => panel.scrollIntoView({ behavior: 'smooth' }), 100);
+            }
+        }
+
+        // ===== NOTIFICACIONES =====
+        function mostrarNotificacion(titulo, mensaje) {
+            const notif = document.getElementById('notification');
+            document.getElementById('notifTitle').textContent = titulo;
+            document.getElementById('notifBody').textContent = mensaje;
+            notif.classList.add('active');
+            setTimeout(() => notif.classList.remove('active'), 4000);
+        }
+
+        // ===== WHATSAPP =====
+        function whatsappMensaje(mensaje) {
+            const telefono = '5491123456789';
+            const texto = encodeURIComponent(mensaje);
+            window.open(`https://wa.me/${telefono}?text=${texto}`, '_blank');
+        }
+
+        // ===== RENDERIZAR PRODUCTOS =====
+        function renderizarProductos() {
+            const grid = document.getElementById('productosGrid');
+            grid.innerHTML = '';
+            productos.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'producto-card';
+                const enCarrito = carrito.some(item => item.id === p.id);
+                card.innerHTML = `
+                    <img src="${p.imagen}" alt="${p.nombre}" />
+                    <h4>${p.nombre}</h4>
+                    <div class="precio">$${p.precio.toLocaleString()}</div>
+                    <button class="btn-agregar ${enCarrito ? 'agregado' : ''}" 
+                            onclick="event.stopPropagation(); agregarAlCarrito(${p.id})"
+                            ${enCarrito ? 'disabled' : ''}>
+                        ${enCarrito ? '✓ En carrito' : 'Agregar'}
+                    </button>
+                    <div class="producto-descripcion" id="desc-${p.id}">${p.descripcion}</div>
+                `;
+                card.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('btn-agregar')) return;
+                    this.querySelector('.producto-descripcion').classList.toggle('active');
+                });
+                grid.appendChild(card);
+            });
+            renderizarAdmin();
+        }
+
+        // ===== RENDERIZAR GALERÍA =====
+        function renderizarGaleria() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+            galeria.forEach(g => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `
+                    <img src="${g.imagen}" alt="Galeria" onclick="event.stopPropagation(); abrirLightbox('${g.imagen}')" />
+                    <span class="gallery-tag">${g.categoria}</span>
+                `;
+                grid.appendChild(item);
+            });
+        }
+
+        // ===== LIGHTBOX =====
+        function abrirLightbox(imagen) {
+            document.getElementById('lightboxImg').src = imagen;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        // ===== RENDERIZAR PROMOCIONES =====
+        function renderizarPromociones() {
+            const grid = document.getElementById('promoGrid');
+            grid.innerHTML = '';
+            promociones.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'promo-card';
+                card.innerHTML = `
+                    <span class="promo-badge">${p.badge}</span>
+                    <h4 style="color:#3d2532;">${p.nombre}</h4>
+                    <p style="color:#5f4754; font-size:0.9rem;">${p.descripcion}</p>
+                    <div style="margin-top:10px;">
+                        <span class="precio-original">$${p.precioOriginal.toLocaleString()}</span>
+                        <span class="precio-oferta"> $${p.precioOferta.toLocaleString()}</span>
+                    </div>
+                    <button class="btn-promo" onclick="whatsappMensaje('Hola! Quiero consultar por el ${p.nombre}')">
+                        <i class="fab fa-whatsapp"></i> Consultar
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ===== RENDERIZAR RESEÑAS =====
+        function renderizarReseñas() {
+            const grid = document.getElementById('reseñasGrid');
+            grid.innerHTML = '';
+            reseñas.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'reseña-card';
+                const estrellas = '⭐'.repeat(r.estrellas) + '☆'.repeat(5 - r.estrellas);
+                card.innerHTML = `
+                    <div class="estrellas">${estrellas}</div>
+                    <p style="color:#5f4754;">"${r.texto}"</p>
+                    <div class="reseña-usuario">
+                        <img class="reseña-foto" src="${r.foto}" alt="${r.nombre}" />
+                        <div>
+                            <div class="nombre">${r.nombre}</div>
+                            <div class="fecha">${r.fecha}</div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ===== AGREGAR RESEÑA =====
+        function agregarReseña() {
+            const nombre = document.getElementById('reseñaNombre').value.trim();
+            const estrellas = parseInt(document.getElementById('reseñaEstrellas').value);
+            const texto = document.getElementById('reseñaTexto').value.trim();
+
+            if (!nombre || !texto) {
+                alert('Completá todos los campos.');
+                return;
+            }
+
+            reseñas.unshift({
+                nombre,
+                estrellas,
+                texto,
+                fecha: 'Recién agregado',
+                foto: `https://i.pravatar.cc/100?img=${Math.floor(Math.random() * 70)}`
+            });
+
+            document.getElementById('reseñaNombre').value = '';
+            document.getElementById('reseñaTexto').value = '';
+            renderizarReseñas();
+            mostrarNotificacion('⭐ Reseña agregada', 'Gracias por compartir tu experiencia!');
+        }
+
+        // ===== RENDERIZAR BLOG =====
+        function renderizarBlog() {
+            const grid = document.getElementById('blogGrid');
+            grid.innerHTML = '';
+            blogPosts.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'blog-card';
+                card.innerHTML = `
+                    <img src="${p.imagen}" alt="${p.titulo}" />
+                    <div class="blog-content">
+                        <h4>${p.titulo}</h4>
+                        <p>${p.resumen}</p>
+                        <span class="blog-tag">${p.tag}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ===== CALENDARIO =====
+        function renderizarCalendario() {
+            const grid = document.getElementById('calendarGrid');
+            const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+                'Noviembre', 'Diciembre'
+            ];
+            document.getElementById('calendarMonthYear').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            let html = '';
+            const daysNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+            daysNames.forEach(d => html += `<div class="day-name">${d}</div>`);
+
+            for (let i = 0; i < firstDay; i++) {
+                html += `<div class="day disabled"></div>`;
+            }
+
+            const today = new Date();
+            for (let d = 1; d <= daysInMonth; d++) {
+                const isPast = new Date(currentYear, currentMonth, d) < new Date(today.getFullYear(), today.getMonth(), today
+                    .getDate());
+                const isReserved = reservedDates.includes(d);
+                const isSelected = selectedDate === d;
+                let classes = 'day';
+                if (isPast) classes += ' disabled';
+                if (isReserved) classes += ' reserved';
+                if (isSelected) classes += ' selected';
+                html += `<div class="${classes}" data-day="${d}" onclick="seleccionarDia(${d})">${d}</div>`;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function seleccionarDia(dia) {
+            const isPast = new Date(currentYear, currentMonth, dia) < new Date();
+            const isReserved = reservedDates.includes(dia);
+            if (isPast || isReserved) return;
+            selectedDate = dia;
+            document.getElementById('fechaSeleccionada').textContent =
+                `📅 Fecha seleccionada: ${dia}/${currentMonth+1}/${currentYear}`;
+            renderizarCalendario();
+        }
+
+        function cambiarMes(delta) {
+            currentMonth += delta;
+            if (currentMonth < 0) { currentMonth = 11;
+                currentYear--; }
+            if (currentMonth > 11) { currentMonth = 0;
+                currentYear++; }
+            renderizarCalendario();
+        }
+
+        function reservarFecha() {
+            if (!selectedDate) {
+                alert('Seleccioná una fecha primero.');
+                return;
+            }
+            if (reservedDates.includes(selectedDate)) {
+                alert('Esta fecha ya está reservada.');
+                return;
+            }
+            reservedDates.push(selectedDate);
+            mostrarNotificacion('📅 Reserva confirmada',
+                `Fecha reservada: ${selectedDate}/${currentMonth+1}/${currentYear}`);
+            whatsappMensaje(
+                `Hola! Quiero confirmar mi reserva para el día ${selectedDate}/${currentMonth+1}/${currentYear}`);
+            renderizarCalendario();
+        }
+
+        // ===== CARRITO =====
+        function agregarAlCarrito(id) {
+            const producto = productos.find(p => p.id === id);
+            if (!producto) return;
+
+            // Verificar si ya está en el carrito
+            if (carrito.some(item => item.id === id)) {
+                mostrarNotificacion('⚠️ Ya en carrito', `${producto.nombre} ya está agregado`);
+                return;
+            }
+
+            carrito.push({ ...producto, cantidad: 1 });
+            actualizarCarrito();
+            renderizarProductos(); // Actualiza el estado de los botones
+
+            mostrarNotificacion('🍰 Producto agregado', `${producto.nombre} agregado al carrito`);
+
+            // Feedback visual en la card
+            const card = document.querySelector(`.producto-card img[src="${producto.imagen}"]`)?.closest('.producto-card');
+            if (card) {
+                const btn = card.querySelector('.btn-agregar');
+                btn.textContent = '✓ En carrito';
+                btn.classList.add('agregado');
+                btn.disabled = true;
+            }
+        }
+
+        function vaciarCarrito() {
+            if (carrito.length === 0) return;
+            if (confirm('¿Vaciar el carrito?')) {
+                carrito = [];
+                actualizarCarrito();
+                renderizarProductos();
+                mostrarNotificacion('🗑️ Carrito vaciado', 'Se eliminaron todos los productos');
+            }
+        }
+
+        function eliminarDelCarrito(id) {
+            carrito = carrito.filter(item => item.id !== id);
+            actualizarCarrito();
+            renderizarProductos();
+            mostrarNotificacion('🗑️ Producto eliminado', 'Se quitó del carrito');
+        }
+
+        function actualizarCarrito() {
+            const lista = document.getElementById('listaCarrito');
+            const total = document.getElementById('totalCarrito');
+            const badge = document.getElementById('cartFloatBadge');
+            const badgeMobile = document.getElementById('cartCountMobile');
+
+            const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            badge.textContent = totalItems;
+            if (badgeMobile) badgeMobile.textContent = totalItems;
+
+            if (carrito.length === 0) {
+                lista.innerHTML = '<p style="color:#aaa; font-size:0.8rem; text-align:center;">Sin productos</p>';
+                total.textContent = 'Total: $0';
+                return;
+            }
+
+            let html = '';
+            let totalPrecio = 0;
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                totalPrecio += subtotal;
+                html += `
+                    <div class="item-carrito">
+                        <span>${item.nombre} x${item.cantidad}</span>
+                        <span>
+                            $${subtotal.toLocaleString()}
+                            <button onclick="eliminarDelCarrito(${item.id})" style="background:none; border:none; color:#e74c3c; cursor:pointer; margin-left:8px;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </span>
+                    </div>
+                `;
+            });
+            lista.innerHTML = html;
+            total.textContent = `Total: $${totalPrecio.toLocaleString()}`;
+        }
+
+        function finalizarPedido() {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío. Agregá productos.');
+                return;
+            }
+
+            let mensaje = '🍰 Pedido Bica By Mimi:\n\n';
+            let total = 0;
+            carrito.forEach(item => {
+                mensaje += `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toLocaleString()}\n`;
+                total += item.precio * item.cantidad;
+            });
+            mensaje += `\n💰 Total: $${total.toLocaleString()}`;
+
+            const telefono = '5491123456789';
+            const texto = encodeURIComponent(mensaje);
+            window.open(`https://wa.me/${telefono}?text=${texto}`, '_blank');
+
+            mostrarNotificacion('📦 Pedido enviado', 'Tu pedido fue enviado por WhatsApp');
+            toggleCarrito();
+        }
+
+        // ===== ADMIN =====
+        function renderizarAdmin() {
+            const lista = document.getElementById('listaProductosAdmin');
+            lista.innerHTML = '';
+            productos.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'admin-producto-item';
+                item.innerHTML = `
+                    <span><strong>${p.nombre}</strong> - $${p.precio.toLocaleString()} (${p.categoria})</span>
+                    <div>
+                        <button class="btn-eliminar" onclick="eliminarProducto(${p.id})">Eliminar</button>
+                    </div>
+                `;
+                lista.appendChild(item);
+            });
+        }
+
+        function agregarProducto() {
+            const nombre = document.getElementById('adminNombre').value.trim();
+            const precio = parseInt(document.getElementById('adminPrecio').value.trim());
+            const imagen = document.getElementById('adminImagen').value.trim();
+            const categoria = document.getElementById('adminCategoria').value;
+            const descripcion = document.getElementById('adminDescripcion').value.trim();
+
+            if (!nombre || isNaN(precio) || !imagen || !descripcion) {
+                alert('Completá todos los campos correctamente.');
+                return;
+            }
+
+            productos.push({ id: nextId++, nombre, precio, imagen, categoria, descripcion });
+            galeria.push({ imagen, categoria });
+
+            document.getElementById('adminNombre').value = '';
+            document.getElementById('adminPrecio').value = '';
+            document.getElementById('adminImagen').value = '';
+            document.getElementById('adminDescripcion').value = '';
+
+            renderizarProductos();
+            renderizarAdmin();
+            renderizarGaleria();
+            mostrarNotificacion('✅ Producto agregado', `${nombre} agregado correctamente`);
+        }
+
+        function eliminarProducto(id) {
+            if (confirm('¿Eliminar este producto?')) {
+                productos = productos.filter(p => p.id !== id);
+                carrito = carrito.filter(item => item.id !== id);
+                renderizarProductos();
+                renderizarAdmin();
+                actualizarCarrito();
+                mostrarNotificacion('🗑️ Producto eliminado', 'El producto fue eliminado correctamente');
+            }
+        }
+
+        // ===== INICIALIZAR =====
+        renderizarProductos();
+        renderizarGaleria();
+        renderizarPromociones();
+        renderizarReseñas();
+        renderizarBlog();
+        renderizarCalendario();
+        actualizarCarrito();
+    </script>
+</body>
+</html>
